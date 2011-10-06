@@ -1,0 +1,137 @@
+<?/*********************************
+Snippet: JoCo (Jot Comments snippet)
+Version : 0.9.1.4
+Author : AHHP ~ Boplo.ir
+
+
+Installation:
+	1. Upload files in assets/snippets/ directory.
+	2. Go to MODx manager, Resources, Manage resources and Snippets.
+	3. Create new snippet, name it "JoCo" and put "<strong>0.9.1</strong> Jot Comment snippet" as description.
+	4. Create a new document, set template of this document to BLANK and put snippet call in it.
+
+NOTES:
+	JoCo snippet use it's styles and doesn't need other styles so put snippet call in a document with no template, with BLANK template.
+	JoCo does not allow any other snippets to be called in current document for security reasons.
+	JoCo has some CSS and Javascript issues with Internet Explorer.
+*********************************/
+
+$params = array();
+
+
+// &lang : Language of snippet
+$params['lang'] = 			isset($lang) ? $lang : "english";
+
+// &trustedGroups : Comma delimated webgroup names who can SEE the JoCo manager
+$params['trustedGroups'] = 		isset($trustedGroups) ? $trustedGroups : false;
+
+// &trustedUsers : Comma delimated user IDs who can SEE the JoCo manager
+$params['trustedUsers'] = 		isset($trustedUsers) ? $trustedUsers : false;
+
+// &redirectPage : ID of document to redirect untrusted users who are not in &trustedUsers and &trustedGroups
+$params['redirectPage'] = 		isset($redirectPage) ? $redirectPage : 1;
+
+// &userDisabledPermissions : Disabled parts of PERMISSION part for specifid users ID. These users can not change these permissions.
+//e.g. `logging:1,2,3|search:1,2,3`  : users with ID of 1 and 2 and 3 ARE NOT ABLE to change their permissions for search and logging
+$params['disabledForUser'] = 		isset($userDisabledPermissions) ? $userDisabledPermissions : "";
+
+// &allDisabledPermissions : Comma delimated disabled parts of PERMISSION part for all users. All users can not change these permissions.
+//e.g. `publish,unpublish`  : All users  are not able to change their permissions for publish and unpublish
+$params['disabledForAll'] = 		isset($allDisabledPermissions) ? $allDisabledPermissions : "webUsers";
+
+// &userEnabledPermissions : Enabled parts of PERMISSION part for specifid users ID. These users can not change these permissions.
+//e.g. `logging:1,2,3|search:1,2,3`  : users with ID of 1 and 2 and 3 ARE ABLE to change their permissions for search and logging
+$params['enabledForUser'] = 		isset($userEnabledPermissions) ? $userEnabledPermissions : "";
+
+// &publishComments : Allow PUBLISHing comments in snippet [1|0]. default: 0
+$params['publish'] = 		isset($publishComments) ? $publishComments : null;
+
+// &unpublishComments : Allow UNPUBLISHing comments in snippet [1|0]. default: 0
+$params['unpublish'] = 		isset($unpublishComments) ? $unpublishComments : null;
+
+// &editComments : Allow EDITing comments in snippet [1|0]. default: 0
+$params['edit'] = 			isset($editComments) ? $editComments : null;
+
+// &removeComments : Allow REMOVing comments in snippet [1|0]. default: 0
+$params['remove'] = 		isset($removeComments) ? $removeComments : null;
+
+// &useSubmitButton : Allow to see and use SUBMIT button in snippet [1|0]. default: 0
+$params['submit'] = 			isset($useSubmitButton) ? $useSubmitButton : null;
+
+// &logActions : Allow to LOG user's actions in a file in snippet [1|0]. default: 0
+$params['logging'] = 		isset($logActions) ? $logActions : null;
+
+// &viewAllComments : Allow to use "view all" link and see all comments together in snippet [1|0]. default: 0
+$params['viewAll'] = 		isset($viewAllComments) ? $viewAllComments : null;
+
+// &viewPublishedComments : Allow to use "view published" link and see published comments in snippet [1|0]. default: 0
+$params['viewPublished'] = 		isset($viewPublishedComments) ? $viewPublishedComments : null;
+
+// &viewUnpublishedComments : Allow to use "view unpublished" link and see unpublished comments in snippet [1|0]. default: 0
+$params['viewUnpublished'] = 	isset($viewUnpublishedComments) ? $viewUnpublishedComments : null;
+
+// &seeIP : Allow to see IP of each comment in snippet [1|0]. default: 0
+$params['ip'] = 			isset($seeIP) ? $seeIP : null;
+
+// &changeWebUsersPermission : Allow to change WebUsers permissions in snippet [1|0]. default: 0
+$params['webUsers'] = 		isset($changeWebUsersPermission) ? $changeWebUsersPermission : null;
+
+/* &createdDocsPermissions : Allow to change comments of documents which current user has CREATED those documents.
+ * value is a 4digit number:
+ * 1: publish  -  2: unpublish  -  3: delete  -  4: edit  -  0: no permission   (1234 means full permissions)
+ * default: 0
+*/
+$params['createdDocs'] = 		isset($createdDocsPermissions) ? $createdDocsPermissions : null;
+
+/* &editedDocsPermissions : Allow to change comments of documents which current user has EDITED those documents.
+ * value is a 4digit number:
+ * 1: publish  -  2: unpublish  -  3: delete  -  4: edit  -  0: no permission   (1234 means full permissions)
+ * default: 0
+*/
+$params['editedDocs'] = 		isset($editedDocsPermissions) ? $editedDocsPermissions : null;
+
+/* &publishedDocsPermissions : Allow to change comments of documents which current user has PUBLISHED those documents.
+ * value is a 4digit number:
+ * 1: publish  -  2: unpublish  -  3: delete  -  4: edit  -  0: no permission   (1234 means full permissions)
+ * default: 0
+*/
+$params['publishedDocs'] = 		isset($publishedDocsPermissions) ? $publishedDocsPermissions : null;
+
+// &useSearch : Allow to see and use SEARCH part in snippet [1|0]. default: 0
+$params['search'] = 			isset($useSearch) ? $useSearch : null;
+
+// &usePermission : Allow to see and use PERMISSION part in snippet [1|0]. default: 0
+$params['permission'] = 		isset($usePermission) ? $usePermission : null;
+
+// &useSummary : Allow to see and use SUMMARY part in snippet [1|0]. default: 0
+$params['summary'] = 		isset($useSummary) ? $useSummary : null;
+
+/* &defaultMainView : Set default view
+ * value: [ 0(unpublished) | 1(published) | 2 (all) | 3(recent) | 4(user's comments) | 5(nothing) ]
+ * default: 0
+*/
+$params['defaultView'] = 		isset($defaultMainView) ? $defaultMainView : null;
+
+// &defaultTheme : Set default theme [ 1(normal) | 2(compressed) ]. default: 1
+$params['defaultTheme'] = 		isset($defaultTheme) ? $defaultTheme : null;
+
+// &changeTheme : Allow to change theme (see theme links) [1|0]. default: 1
+$params['changeTheme'] = 		isset($changeTheme) ? $changeTheme : null;
+
+// &main_resultPerPage : Number of results per page in MAIN part. default: 30
+$params['resPerPage'] = 		isset($main_resultPerPage) ? $main_resultPerPage : null;
+
+// &summary_resultPerPage : Number of results per page in SUMMARY part. default: 50
+$params['summaryResPerPage'] = 	isset($summary_resultPerPage) ? $summary_resultPerPage : null;
+
+// &dir : Snippet direction [ ltr | rtl ].
+$params['dir'] = 	isset($dir) ? $dir : null;
+
+
+
+if( !isset($_SESSION['webValidated']) && !isset($_SESSION['mgrValidated']) )
+{
+	$modx->sendRedirect( $modx->makeUrl($params['redirectPage']) );
+	return;
+}
+include_once('assets/snippets/JoCo/joco.php');

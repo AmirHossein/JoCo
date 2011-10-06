@@ -1,0 +1,91 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"> 
+<html dir="[+dir+]" lang="[+lang_attr+]" xml:lang="[+lang_attr+]"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="[+baseUrl+][+modulePath+]tpls/style.css" />
+	<style type="text/css">
+		.sectionHeader { background: #bee860 url([+baseUrl+][+modulePath+]images/greenfade.gif) repeat-x top; }
+		.sectionBody { background: #fff url([+baseUrl+][+modulePath+]images/tabareabg.gif) repeat-x top; }
+		li { list-style: disc outside url([+baseUrl+][+modulePath+]images/li.gif); }
+		
+		#JC-wrapper{ background: url([+baseUrl+][+modulePath+]images/wrapper-[+alignLeft+].png) repeat-y; }
+		#JoCoLogo{ float:[+alignRight+]; margin-[+alignLeft+]:10px; margin-top:10px;}
+		.ie6 #JoCoLogo{ float:[+alignRight+]; position:relative; }
+		.ff3 #JoCoLogo{ margin-bottom:10px; }
+		
+		#callTable tr { background-color:#F7F7F7; }
+		#callTable td { padding: 5px; text-align:center; }
+		#pagi { margin-top:30px;}
+		.pageNum { padding:3px 10px; background-color:#EEE; }
+		.pageNum a , .preLink a , .nextLink a { font-weight:bold; color:#444; }
+		.curr { padding:3px 10px; background-color:#444; color:#FFF; font-weight:bold;}
+		
+		table { font-size:1em; }
+		
+		.call { border-top:1px solid #999; border-left:1px solid #999; border-right:1px solid #FFF; border-bottom:1px solid #FFF; background-color:#EEE; padding: 10px; }
+		.editLink { float:right; position:relative; width:10%; }
+		.editArea { width:90%; }
+		.editButton {  width:20%; margin:20px;}
+		
+		/* IE */
+		.ie .sectionBody { width:100%; }
+		.ie .sectionBody .sectionBody { width:100%; }
+		
+		/*  Opera  */
+		.opera .sectionHeader { margin-top:5px; }
+	</style>
+	<script type="text/javascript" src="[+baseUrl+][+modulePath+]js/css_browser_selector.js"></script>
+	<script type="text/javascript" src="[+baseUrl+][+modulePath+]js/ajax_request.js"></script>
+	<script type="text/javascript">
+		var mKey = "[+mKey+]";
+		var baseUrl = "[+baseUrl+]";
+		var modulePath = "[+modulePath+]";
+		var lang_loading = "[lang+loading+]";
+		var lang_jotcall_hide = "[lang+jotcall_hide+]";
+		var lang_jotcall_show = "[lang+jotcall_show+]";
+		var lang_save = "[lang+save+]";
+		var lang_cancel = "[lang+cancel+]";
+		var lang_are_you_sure_edit = "[lang+are_you_sure_edit+]";
+	</script>
+	<script type="text/javascript" src="[+baseUrl+][+modulePath+]js/jotcall.js"></script>
+</head>
+<body>
+<div class="sectionHeader">[lang+sectionHeader+]</div>
+	<div class="sectionBody">
+		<div id="JC-wrapper">
+			<img id="JoCoLogo" src="[+baseUrl+][+modulePath+]images/JoCo.gif" />
+			<a style="float:[+alignLeft+];" href="index.php?a=112&id=[+mKey+]"><small>[lang+go_back_home+]</small></a>
+			<h2>Jot Comments module</h2>
+			<table cellspacing="2" style=" margin-top:5px; margin-bottom:0px;">
+				[+search+]
+				[+permission+]
+				[+summary+]
+				[+jotCall+]
+				<td class="button">
+					<a href="index.php?a=112&id=[+mKey+]&help=1" onmouseover="document.getElementById('action_des').innerHTML='[lang+help_para+]';"
+	onmouseout="document.getElementById('action_des').innerHTML='';"><img src="[+baseUrl+][+modulePath+]/images/help.png" /><br />[lang+help+]</a>
+</td>
+			</table>
+			<p id="action_des">&nbsp;</p>
+			<p style="clear:[+alignRight+];">&nbsp;</p>
+		<div class="sectionHeader">[lang+jotcall+]</div> 
+		<div class="sectionBody">
+			<p>[lang+jotcall_part_para+]</p>
+			<br />
+			<div>[+jotCallResults+]</div>
+			<div id="pagi" align="center">
+				<table border="0">
+					<tr>
+						<td width="30%" class="preLink">[+previousPage+]</td>
+						<td width="40%" align="center">[lang+all_results+] [+allResults+]</td>
+						<td width="30%" class="nextLink" align="center">[+nextPage+]</td>
+					</tr>
+				</table>
+				<p>
+					<span id="nums">[+paginate+]</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿<html dir="[+dir+]" lang="[+lang_attr+]" xml:lang="[+lang_attr+]"> 
+<head>
+	<title>[(site_name)] | [*pagetitle*] | [lang+summary+]</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="[+sniPath+]tpls/style.css" />
+	<style type="text/css">
+		.sectionHeader {background: #bee860 url([+sniPath+]images/greenfade.gif) repeat-x top;}
+		.sectionBody {background: #fff url([+sniPath+]images/tabareabg.gif) repeat-x top;}
+		li { list-style: disc outside url([+sniPath+]images/li.gif); }
+		form input, form textarea { background: #fff url([+sniPath+]images/input-bg.gif) repeat-x top left; }
+		
+		#JC-wrapper { background: url([+sniPath+]images/wrapper-[+alignLeft+].png) repeat-y; }
+		#JoCoLogo { float:[+alignRight+]; margin-[+alignLeft+]:10px; margin-top:10px; }
+		.ff3 #JoCoLogo { margin-bottom:10px; }
+		
+		/* IE */
+		.ie .sectionBody { width:100%; }
+		.ie .sectionBody .sectionBody { width:100%; }
+		
+		/*  Opera  */
+		.opera .sectionHeader { margin-top:5px; }
+		
+		#summaryTable tr { background-color:#F7F7F7; font-size:0.7em; }
+		#summaryTable td { padding: 5px; }
+		#pagi { margin-top:20px; }
+		.pageNum { padding:3px 10px; background-color:#EEE; }
+		.pageNum a , .preLink a , .nextLink a { font-weight:bold; color:#444; }
+		.preLink a , .nextLink a, .resLink a, .preLink, .nextLink, .resLink { font-size:0.8em; }
+		.curr { padding:3px 10px; background-color:#444; color:#FFF; font-weight:bold;}
+	</style>
+	<script type="text/javascript" src="[+sniPath+]js/css_browser_selector.js"></script>
+	<script type="text/javascript" src="[+sniPath+]js/ajax_request.js"></script>
+	<script type="text/javascript">
+		var mKey = "[+mKey+]";
+		var sniPath = "[+sniPath+]";
+		var lang_loading = "[lang+loading+]";
+	</script>
+	<script type="text/javascript" src="[+sniPath+]js/summary.js"></script>
+</head>
+<body>
+<div class="sectionHeader">[lang+sectionHeader+]</div>
+	<div class="sectionBody">
+		<div id="JC-wrapper">
+			<img id="JoCoLogo" src="[+sniPath+]images/JoCo.gif" />
+			<a style="float:[+alignLeft+];" href="[+pageUrl+]"><small>[lang+go_back_home+]</small></a>
+			<h2>Jot Comments snippet</h2>
+			<table cellspacing="2" style=" margin-top:5px; margin-bottom:0px;">
+				[+search+]
+				[+permission+]
+				[+summary+]
+				<td class="button">
+					<a href="[+pageUrl+]help=1" onmouseover="document.getElementById('action_des').innerHTML='[lang+help_para+]';"
+	onmouseout="document.getElementById('action_des').innerHTML='';"><img src="[+sniPath+]/images/help.png" /><br />[lang+help+]</a>
+</td>
+			</table>
+			<p id="action_des">&nbsp;</p>
+			<p style="clear:[+alignRight+];">&nbsp;</p>
+		<div class="sectionHeader">[lang+summary+]</div> 
+		<div class="sectionBody">
+			<p>[lang+summary_part_para+]</p>
+			<br />
+			<div>[+summaryResults+]</div>
+			<div id="pagi" align="center">
+				<table border="0">
+					<tr>
+						<td width="30%" class="preLink">[+previousPage+]</td>
+						<td width="40%" class="resLink" align="center">[lang+all_results+] [+allResults+]</td>
+						<td width="30%" class="nextLink" align="center">[+nextPage+]</td>
+					</tr>
+				</table>
+				<p>
+					<span id="nums">[+paginate+]</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+/*********************************
+Module : JoCo (Jot Comments module)
+Version : 0.9.2
+Author : AHHP ~ Boplo.ir
+On : 2009/03/29
+*********************************/
+include_once($modx->config['base_path'].'assets/modules/JoCo/joco.php');
+

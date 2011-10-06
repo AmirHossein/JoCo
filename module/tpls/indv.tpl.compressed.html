@@ -1,0 +1,41 @@
+﻿<!-- indvTpl [+id+] -->
+<table class="[+commentsTable+] [+myComment+]" cellspacing="2" cellpadding="3">
+	<tr>
+		<td>
+			<div style="float:[+alignRight+];">
+				<a href="[+url+]" target="blank"><b>[+pagetitle+]</b></a>
+				<span style="margin-[+alignRight+]:20px; font-weight:normal;">[+resultFrom+]</span>
+			</div>
+			<div style="float:[+alignLeft+];"><a id="link_secRow_[+id+]" href="javascript:getMore([+id+]);">[lang+expand+]</a></div>
+		</td>
+		<td width="30%" align="center">[+time+]</td>
+		<td width="10%" align="center">[+edit_ajax+]</td>
+		<div id="quickButts_[+id+]" class="quickButts">
+			<td>[+publish_ajax+]</td>
+			<td>[+unpublish_ajax+]</td>
+			<td>[+delete_ajax+]</td>
+		</div>
+	</tr>
+	<tr id="secRow_[+id+]" style="display:none;">
+		<td>[+labels+]</td>
+		<td colspan="2"><span class="unpublishedNode">[lang+subject+]:</span> [+title+]</td>
+		<td colspan="3"><a href="http://www.ripe.net/perl/whois?searchtext=[+secip+]" target="blank"><small>[+ip+]</small></a></td>
+	</tr>
+	<tr>
+		<td colspan="2" id="row_[+id+]">
+			<div id="loading_[+id+]"></div>
+			<div id="done_[+id+]"></div>
+			<div id="msg_[+id+]">
+				<span id="smallMessage_[+id+]">[+smallMessage+]</span>
+				<p id="message_[+id+]" class="msg" style="background: transparent url('[+baseUrl+][+modulePath+]images/statusBg-[+un_publish+].png') no-repeat top [+alignLeft+]; display:none;">[+message+]</p>
+			</div>
+			[+edit_form+]
+		</td>
+		<td align="center" id="status_[+id+]">[lang+[+un_publish+]+]</td>
+		<div id="chkboxes_[+id+]">
+			[+publish_chkbx+]
+			[+unpublish_chkbx+]
+			[+delete_chkbx+]
+		</div>
+	</tr>
+</table>

@@ -1,0 +1,104 @@
+﻿<html dir="[+dir+]" lang="[+lang_attr+]" xml:lang="[+lang_attr+]"> 
+<head>
+	<title>[(site_name)] | [*pagetitle*] | [lang+permission+]</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="[+sniPath+]tpls/style.css" />
+	<style type="text/css">
+		.sectionHeader {background: #bee860 url([+sniPath+]images/greenfade.gif) repeat-x top;}
+		.sectionBody {background: #fff url([+sniPath+]images/tabareabg.gif) repeat-x top;}
+		li { list-style: disc outside url([+sniPath+]images/li.gif); }
+		form input, form textarea { background: #fff url([+sniPath+]images/input-bg.gif) repeat-x top left; }
+		
+		#JC-wrapper { background: url([+sniPath+]images/wrapper-[+alignLeft+].png) repeat-y; }
+		#JoCoLogo { float:[+alignRight+]; margin-[+alignLeft+]:10px; margin-top:10px; }
+		.ff3 #JoCoLogo { margin-bottom:10px; }
+		
+		#permiTable { font-size:1em; }
+		#permiTable tr { background-color:#F7F7F7; }
+		#permiTable td { padding: 2px 10px; }
+		
+		#permissionTable { font-size:1em; }
+		
+		/* IE */
+		.ie .sectionBody { width:100%; }
+		.ie .sectionBody .sectionBody { width:100%; }
+		
+		/*  Opera  */
+		.opera .sectionHeader { margin-top:5px; }
+	</style>
+	<script type="text/javascript" src="[+sniPath+]js/css_browser_selector.js"></script>
+	<script type="text/javascript" src="[+sniPath+]js/ajax_request.js"></script>
+	<script type="text/javascript">
+		var mKey = "[+mKey+]";
+		var sniPath = "[+sniPath+]";
+		var lang_loading = "[lang+loading+]";
+		var lang_get_permissions = "[lang+get_permissions+]";
+		var lang_add_user = "[lang+add_user+]";
+		var lang_remove_user = "[lang+remove_user+]";
+		var lang_move_in_confirm = "[lang+move_in_confirm+]";
+		var lang_move_out_confirm = "[lang+move_out_confirm+]";
+		var lang_choose_a_user = "[lang+choose_a_user+]";
+	</script>	
+	<script type="text/javascript" src="[+sniPath+]js/permissions.js"></script>
+</head>
+<body>
+<div class="sectionHeader">[lang+sectionHeader+]</div>
+	<div class="sectionBody">
+		<div id="JC-wrapper">
+			<img id="JoCoLogo" src="[+sniPath+]images/JoCo.gif" />
+			<a style="float:[+alignLeft+];" href="[+pageUrl+]"><small>[lang+go_back_home+]</small></a>
+			<h2>Jot Comments snippet</h2>
+			<table cellspacing="2" style=" margin-top:5px; margin-bottom:0px;">
+				[+search+]
+				[+permission+]
+				[+summary+]
+				<td class="button">
+					<a href="[+pageUrl+]help=1" onmouseover="document.getElementById('action_des').innerHTML='[lang+help_para+]';"
+	onmouseout="document.getElementById('action_des').innerHTML='';"><img src="[+sniPath+]/images/help.png" /><br />[lang+help+]</a>
+</td>
+			</table>
+			<p id="action_des">&nbsp;</p>
+			<p style="clear:[+alignRight+];">&nbsp;</p>
+		<!-- search -->
+		<div class="sectionHeader">[lang+permission+]</div> 
+		<div class="sectionBody">
+			<p>[lang+permission_part_para+]</p>
+			<p>&nbsp;</p>
+			<div id="managePermissons">
+				<form name="permission">
+					<table width="100%" id="permissionTable">
+						<tr>
+							<th class="gridHeader">[lang+all_users+]</th>
+							<th></th>
+							<th class="gridHeader">[lang+exist_users+]</th>
+						</tr>
+						<tr>
+							<td width="33%" align="center">
+								<div id="mgrallUsers">[+allMgrUsers+]</div>
+								<br />
+								<div id="weballUsers">[+allWebUsers+]</div>
+							</td>
+							<td width="33%" align="center">
+								<div id="moveButtons">
+									<p id="moveIn"><img src="[+sniPath+]images/right_arrow_dis.png" alt="[lang+hire_user+]"/></p>
+									<p id="moveOut"><img src="[+sniPath+]images/left_arrow_dis.png" alt="[lang+fire_user+]"/></p>
+									<p id="getPermi"><img src="[+sniPath+]images/process_dis.png" alt="[lang+get_permissions+]" /></p>
+								</div>
+							</td>
+							<td width="33%" align="center">
+								<div id="mgrexistUsers">[+existMgrUsers+]</div>
+								<br />
+								<div id="webexistUsers">[+existWebUsers+]</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			
+			<form name="setPermissions" id="dataTableForm">
+				<div id="dataTable" align="center" style="margin-top:50px;"></div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

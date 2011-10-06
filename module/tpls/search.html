@@ -1,0 +1,244 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"> 
+<html dir="[+dir+]" lang="[+lang_attr+]" xml:lang="[+lang_attr+]"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="[+baseUrl+][+modulePath+]tpls/style.css" />
+	<style type="text/css">
+		.sectionHeader { background: #bee860 url([+baseUrl+][+modulePath+]images/greenfade.gif) repeat-x top; }
+		.sectionBody { background: #fff url([+baseUrl+][+modulePath+]images/tabareabg.gif) repeat-x top; }
+		li { list-style: disc outside url([+baseUrl+][+modulePath+]images/li.gif); }
+		form input, form textarea { background: #fff url([+baseUrl+][+modulePath+]images/input-bg.gif) repeat-x top left; }
+		
+		#JC-wrapper{ background: url([+baseUrl+][+modulePath+]images/wrapper-[+alignLeft+].png) repeat-y; }
+		#JoCoLogo{ float:[+alignRight+]; margin-[+alignLeft+]:10px; margin-top:10px; position:relative;}
+		.ff3 #JoCoLogo{ margin-bottom:10px; }
+		
+		.JoCo-section{ margin-bottom: 30px; }
+		#errors{ padding:3px; font-weight:bold; border:1px solid red; color:#000; background-color:pink; }
+		#getUsersContainer,#getDocsContainer { float:[+alignRight+]; border:5px solid #c1e079; padding:5px 10px; display:none; width:350px; background-color:#444; color:#fff; position:relative;}
+		.tables{ float:[+alignRight+]; margin-[+alignLeft+]: 50px; position:relative;}
+		.eliminated{ color: #999; }
+		
+		table { font-size:1em; }
+		
+		/* IE */
+		.ie .sectionBody { width:100%; }
+		.ie .sectionBody .sectionBody { width:100%; }
+		
+		/*  Opera  */
+		.opera .sectionHeader { margin-top:5px; }
+	</style>
+	<script type="text/javascript" src="[+baseUrl+][+modulePath+]js/css_browser_selector.js"></script>
+	<script type="text/javascript" src="[+baseUrl+][+modulePath+]js/ajax_request.js"></script>
+	<script type="text/javascript">
+		var mKey = "[+mKey+]";
+		var baseUrl = "[+baseUrl+]";
+		var modulePath = "[+modulePath+]";
+		var lang_loading = "[lang+loading+]";
+		var lang_fields_are_empty = "[lang+fields_are_empty+]";
+	</script>
+	<script type="text/javascript" src="[+baseUrl+][+modulePath+]js/search.js"></script>
+</head>
+<body>
+<div class="sectionHeader">[lang+sectionHeader+]</div>
+	<div class="sectionBody">
+		<div id="JC-wrapper">
+			<img id="JoCoLogo" src="[+baseUrl+][+modulePath+]images/JoCo.gif" />
+			<a style="float:[+alignLeft+];" href="index.php?a=112&id=[+mKey+]"><small>[lang+go_back_home+]</small></a>
+			<h2>Jot Comments module</h2>
+			<table cellspacing="2" style=" margin-top:5px; margin-bottom:0px;">
+				[+search+]
+				[+permission+]
+				[+summary+]
+				[+jotCall+]
+				<td class="button">
+					<a href="index.php?a=112&id=[+mKey+]&help=1" onmouseover="document.getElementById('action_des').innerHTML='[lang+help_para+]';"
+	onmouseout="document.getElementById('action_des').innerHTML='';"><img src="[+baseUrl+][+modulePath+]/images/help.png" /><br />[lang+help+]</a>
+</td>
+			</table>
+			<p id="action_des">&nbsp;</p>
+			<p style="clear:[+alignRight+];">&nbsp;</p>
+		<!-- search -->
+		<div class="sectionHeader">[lang+search+]</div> 
+		<div class="sectionBody">
+			<form name="JoCoSearchForm" action="index.php?a=112&id=[+mKey+]&reffer=1" method="POST">
+				<h3>[lang+display+]</h3>
+				<div class="JoCo-section">
+					<ul>
+						<li><input type="radio" id="type1" name="type" value="1" checked="checked" /><label for="type1"> [lang+published_comments+]</label></li>
+						<li><input type="radio" id="type0" name="type" value="0" /><label for="type0"> [lang+unpublished_comments+]</label></li>
+						<li><input type="radio" id="type2" name="type" value="2" /><label for="type2"> [lang+all_comments+]</label></li>
+					</ul>
+				</div>
+
+				<h3>[lang+search_in_comments+]</h3>
+				<div class="JoCo-section">
+					<table class="tables">
+						<tr>
+							<td>[lang+search_string+]:</td>
+							<td><input type="text" name="searchComments" /></td>
+							<td width="5%"></td>
+							<td width="13%"><input type="checkbox" name="in_content" checked="checked" />[lang+in_content+]</td>
+							<td width="13%"><input type="checkbox" name="in_title" />[lang+in_title+]</td>
+							<td width="13%"><input type="checkbox" name="in_tagid" />[lang+in_tagid+]</td>
+							<td width="13%"><input type="checkbox" name="in_flags" />[lang+in_flags+]</td>
+						</tr>
+						<tr>
+							<td>[lang+search_not_string+]:</td>
+							<td><input type="text" name="searchNotComments" /></td>
+							<td></td>
+							<td><input type="checkbox" name="not_in_content" checked="checked" />[lang+in_content+]</td>
+							<td><input type="checkbox" name="not_in_title" />[lang+in_title+]</td>
+							<td><input type="checkbox" name="not_in_tagid" />[lang+in_tagid+]</td>
+							<td><input type="checkbox" name="not_in_flags" />[lang+in_flags+]</td>						
+						</tr>
+						<tr><td><br /></td></tr>
+						<tr>
+							<td>[lang+search_regex+]:</td>
+							<td><input type="text" name="searchRegex" /></td>
+							<td></td>
+							<td><input type="checkbox" name="regx_in_content" checked="checked" />[lang+in_content+]</td>
+							<td><input type="checkbox" name="regx_in_title" />[lang+in_title+]</td>
+							<td><input type="checkbox" name="regx_in_tagid" />[lang+in_tagid+]</td>
+							<td><input type="checkbox" name="regx_in_flags" />[lang+in_flags+]</td>						
+						</tr>
+						<tr>
+							<td>[lang+search_not_regex+]:</td>
+							<td><input type="text" name="searchNotRegex" /></td>
+							<td></td>
+							<td><input type="checkbox" name="regx_not_in_content" checked="checked" />[lang+in_content+]</td>
+							<td><input type="checkbox" name="regx_not_in_title" />[lang+in_title+]</td>
+							<td><input type="checkbox" name="regx_not_in_tagid" />[lang+in_tagid+]</td>
+							<td><input type="checkbox" name="regx_not_in_flags" />[lang+in_flags+]</td>						
+						</tr>
+						</table>
+						<div style="clear:both; height:0;"></div>
+				</div>
+				
+				<h3>[lang+search_in_docs+]</h3>
+				<div class="JoCo-section">
+					<span id="doc_des" class="unpublishedNode" style="font-size:90%;"></span>
+					<table class="tables">
+						<tr>
+							<td>[lang+search_by_parents+]:</td>
+							<td><input type="text" name="searchParents" onmouseover="document.getElementById('doc_des').innerHTML='[lang+search_by_parents_des+]';" onmouseout="getElementById('doc_des').innerHTML='';" /></td>
+						</tr>
+						<tr>
+							<td>[lang+search_by_docgroups+]:</td>
+							<td><input type="text" name="searchDocGroups" onmouseover="document.getElementById('doc_des').innerHTML='[lang+search_by_docgroups_des+]';" onmouseout="getElementById('doc_des').innerHTML='';" /></td>
+						</tr>
+						<tr>
+							<td>[lang+search_by_docs+]:</td>
+							<td><input type="text" name="searchDocs" onmouseover="document.getElementById('doc_des').innerHTML='[lang+search_by_docs_des+]';" onmouseout="getElementById('doc_des').innerHTML='';" /></td>
+						</tr>
+						<tr>
+							<td>[lang+search_by_notdocs+]:</td>
+							<td><input type="text" name="searchNotDocs" onmouseover="document.getElementById('doc_des').innerHTML='[lang+search_by_notdocs_des+]';" onmouseout="getElementById('doc_des').innerHTML='';" /></td>
+						</tr>
+					</table>
+					<p><a href="javascript:getNames('doc');">[lang+see_docs_you_choosen+]</a></p>
+					<div id="getDocsContainer">
+						<div id="getDocs"></div>
+						<small class="eliminated">[lang+getNames_des_para+]</small>
+					</div>
+					<div style="clear:[+alignRight+]; height:0;"></div>
+				</div>
+				
+				<h3>[lang+search_by_users+]</h3>
+				<div class="JoCo-section">
+					<span id="user_des" class="unpublishedNode" style="font-size:80%;"></span>
+					<table class="tables">
+						<tr>
+							<td>[lang+search_by_webgroups+]:</td>
+							<td><input type="text" name="searchWebGroups" onmouseover="document.getElementById('user_des').innerHTML='[lang+search_by_webgroups_des+]';" onmouseout="getElementById('user_des').innerHTML='';" /></td>
+						</tr>
+						<tr>
+							<td>[lang+search_users+]:</td>
+							<td><input type="text" name="searchUsers" onmouseover="document.getElementById('user_des').innerHTML='[lang+search_users_des+]';" onmouseout="getElementById('user_des').innerHTML='';" /></td>
+						</tr>
+						<tr>
+							<td>[lang+search_by_notusers+]:</td>
+							<td><input type="text" name="searchNotUsers" onmouseover="document.getElementById('user_des').innerHTML='[lang+search_by_notusers_des+]';" onmouseout="getElementById('user_des').innerHTML='';" /></td>
+						</tr>
+						<tr>
+							<td>[lang+search_by_quests+]:</td>
+							<td><input type="checkbox" name="searchGuest" onmouseover="document.getElementById('user_des').innerHTML='[lang+search_guests+]';" onmouseout="getElementById('user_des').innerHTML='';" /></td>
+						</tr>
+					</table>
+					<p><a href="javascript:getNames('user');">[lang+see_users_you_choosen+]</a></p>
+					<div id="getUsersContainer">
+						<div id="getUsers"></div>
+						<small class="eliminated">[lang+getNames_des_para+]</small>
+					</div>
+					<div style="clear:[+alignRight+]; height:0;"></div>
+				</div>
+
+				<h3>[lang+date_limit+]</h3>
+				<div class="JoCo-section">
+					<table>
+						<tr>
+							<td width="50">[lang+from+]:</td>
+							<td>
+								<input type="text" name="fromDate" onmouseover="document.getElementById('date_des1').innerHTML='[lang+sample+]';" onmouseout="getElementById('date_des1').innerHTML='';" />
+								<span id="date_des1" class="unpublishedNode" style="font-size:80%;"></span>
+							</td>
+						</tr>
+						<tr>
+							<td>[lang+to+]:</td>
+							<td>
+								<input type="text" name="toDate" onmouseover="document.getElementById('date_des2').innerHTML='[lang+sample+]';" onmouseout="getElementById('date_des2').innerHTML='';" />
+								<span id="date_des2" class="unpublishedNode" style="font-size:80%;"></span>
+							</td>
+						</tr>
+					</table>
+					
+				</div>
+
+				<h3>[lang+limit+]</h3>
+				<div class="JoCo-section">
+					[lang+limit_number+]: 
+					<input type="text" name="maxResult" value="50" />
+				</div>
+
+				<h3>[lang+sort+]</h3>
+				<div class="JoCo-section">
+					[lang+sortBy+]: 
+					<select name="sortBy">
+						<option value="uparent">[lang+uparent_option+]</option>
+						<option value="title">[lang+title_option+]</option>
+						<option value="id">[lang+id_option+]</option>
+						<option value="createdby">[lang+createdby_option+]</option>
+						<option value="createdon">[lang+createdon_option+]</option>
+						<option value="editedby">[lang+editedby_option+]</option>
+						<option value="editedon">[lang+editedon_option+]</option>
+						<option value="publishedby">[lang+publishedby_option+]</option>
+						<option value="publishedon">[lang+publishedon_option+]</option>
+						<option value="tagid">[lang+tagid_option+]</option>
+						<option value="secip">[lang+secip_option+]</option>
+					</select>
+					<select name="sortType">
+						<option value="ASC">[lang+ASC+]</option>
+						<option value="DESC">[lang+DESC+]</option>
+					</select>
+				</div>
+				
+				<h3>[lang+recentComments+]</h3>
+				<div class="JoCo-section">
+					[lang+only_recent_from_my_last_active+] <small>([+lastActive+])</small>: 
+					<input type="checkbox" name="recentComments" />
+				</div>
+				
+				<p>&nbsp;</p>
+				<p style="text-align:center;">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input style="width:120px; height:30px; text-align:center;" type="submit" name="comment_search_submit" value="[lang+display+]" />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input style="width:120px; height:30px; text-align:center;" type="button" onclick="javascript:window.location='index.php?a=112&id=[+mKey+]';" value="[lang+cancel+]" />
+					<input type="hidden" name="search" value="1" />
+				</p>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

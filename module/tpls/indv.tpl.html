@@ -1,0 +1,37 @@
+﻿<!-- indvTpl [+id+] -->
+<div class="sectionHeader">
+	[+title+]<span style="margin-[+alignRight+]:20px; font-weight:normal;">[+resultFrom+]</span>
+	<div id="quickButts_[+id+]" class="quickButts">
+		[+edit_ajax+][+publish_ajax+]
+		[+unpublish_ajax+]
+		[+delete_ajax+]
+	</div>
+</div>
+<div class="sectionBody [+myComment+]" style="padding-bottom:0; padding-right:0;">
+	<div id="loading_[+id+]"></div>
+	<div id="done_[+id+]"></div>
+	<div id="indvTpl_[+id+]">
+		<div class="ip">
+			<a href="[+url+]" target="blank"><b>[+pagetitle+]</b></a><br />
+			<a href="http://www.ripe.net/perl/whois?searchtext=[+secip+]" target="blank"><small>[+ip+]</small></a>
+		</div>
+		<a name="indvTpl_[+id+]"></a>
+		[+labels+]
+		<span class="unpublishedNode">[lang+sent_on+]:</span> [+time+]<br />
+		<div id="commantMessage_[+id+]"><!-- fix bug after editing -->
+			<table class="tbl">
+				<td width="91%">
+					<div id="msg_[+id+]">
+						<p id="message_[+id+]" class="msg" style="background: #EEE url('[+baseUrl+][+modulePath+]images/statusBg-[+un_publish+].png') no-repeat top [+alignLeft+];">[+message+]</p>
+					</div>
+					[+edit_form+]
+				</td>
+				<div id="chkboxes_[+id+]">
+					[+publish_chkbx+]
+					[+unpublish_chkbx+]
+					[+delete_chkbx+]
+				</div>
+			</table>
+		</div>
+	</div>
+</div>

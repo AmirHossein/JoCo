@@ -1,0 +1,166 @@
+﻿<html dir="[+dir+]" lang="[+lang_attr+]" xml:lang="[+lang_attr+]"> 
+<head>
+	<title>JoCo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="[+sniPath+]tpls/style.css" />
+	<style type="text/css">
+		.sectionHeader { background: #bee860 url([+sniPath+]images/greenfade.gif) repeat-x top; }
+		.sectionBody { background: #fff url([+sniPath+]images/tabareabg.gif) repeat-x top; }
+		li { list-style: disc outside url([+sniPath+]images/li.gif); }
+		
+		#JC-wrapper { background: url([+sniPath+]images/wrapper-[+alignLeft+].png) repeat-y; }
+		#JoCoLogo { float:[+alignRight+]; margin-[+alignLeft+]:10px; margin-top:10px; }
+		.ff3 #JoCoLogo { margin-bottom:10px; }
+		
+		.ip{ float:[+alignLeft+]; text-align:[+alignLeft+]; }
+		.msg{ margin:0; color:#000; padding:5px; }
+		.done{ text-align:center; font-size:1.2em; color:#444; font-weight:bold; height:20px; border:1px solid #DDD; background-image:url([+sniPath+]images/done.gif);}
+		.quickButts{ float:[+alignLeft+]; margin-[+alignLeft+]:7px;}
+		.qbutton{ margin-[+alignRight+]:7px;}
+		.ff3 .quickButts{ float:[+alignLeft+]; margin-[+alignLeft+]:5px; margin-top:-15px; }
+		#JC-wrapper{ background: url([+sniPath+]images/wrapper-[+alignLeft+].png) repeat-y;}
+		.chkbx-pub, .chkbx-unpub{ border:1px solid #DDD; text-align:center; }
+		.chkbx-delete{ border:1px solid #DDD; text-align:center; background-image:url([+sniPath+]images/delete-col.gif); }
+		#JoCoLogo{ float:[+alignRight+]; margin-[+alignLeft+]:10px; margin-top:10px;}
+		.ff3 #JoCoLogo{ margin-bottom:10px; }
+		.tbl{ width:100% }
+		.highlight{ color: red; font-weight:bold; }
+		#errors{ text-align:center; font-weight:bold; margin-top:50px; margin-bottom:50px; font-size:1.5em; }
+		
+		#pagi { margin-top:20px; }
+		.pageNum { padding:3px 10px; background-color:#EEE; }
+		.pageNum a , .preLink a , .nextLink a { font-weight:bold; color:#444; }
+		.preLink a , .nextLink a, .resLink a, .preLink, .nextLink, .resLink { font-size:0.8em; }
+		.curr { padding:3px 10px; background-color:#444; color:#9ebc5a; font-weight:bold;}
+		#navi a{ color:#999; font-weight:bold; font-size:0.7em; }
+		.sectionBody .myComment a{ color: blue }
+		
+		.commentsTable{ margin-bottom:-10px; font-size:1em; background-color:#F7F7F7; }
+		.commentsTable tr{ background-color:#FCFFDF;}
+		.commentsTable-alt { margin-bottom:-10px; font-size:1em; background-color:#F7F7F7; }
+		.commentsTable-alt tr{ background-color:#FDFFEF;}
+		
+		
+		
+		/* IE */
+		#ieWarning { color:#005588; display:none; }
+		.ie #ieWarning { display:block; }
+		.ie .sectionBody { width:100%; }
+		.ie .sectionBody .sectionBody { width:100%; }
+		.ie .quickButts { margin-top:-18px; }
+		
+		.opera .commentsTable, .opera .commentsTable-alt { margin-bottom:10px; }
+	</style>
+	<script type="text/javascript" src="[+sniPath+]js/css_browser_selector.js"></script>
+	<script type="text/javascript" src="[+sniPath+]js/ajax_request.js"></script>
+	<script type="text/javascript">
+		var mKey = "[+mKey+]";
+		var sniPath = "[+sniPath+]";
+		var lang_loading = "[lang+loading+]";
+		var lang_are_you_sure_publish = "[lang+are_you_sure_publish+]";
+		var lang_are_you_sure_unpublish = "[lang+are_you_sure_unpublish+]";
+		var lang_are_you_sure_edit = "[lang+are_you_sure_edit+]";
+		var lang_are_you_sure_delete = "[lang+are_you_sure_delete+]";
+		var lang_published = "[lang+published+]";
+		var lang_unpublished = "[lang+unpublished+]";
+		var lang_deleted = "[lang+deleted+]";
+		var lang_edited = "[lang+edited+]";
+		
+		var lang_checkAll_publish = "[lang+checkAll_publish+]";
+		var lang_uncheckAll_publish = "[lang+uncheckAll_publish+]";
+		var lang_checkAll_unpublish = "[lang+checkAll_unpublish+]";
+		var lang_uncheckAll_unpublish = "[lang+uncheckAll_unpublish+]";
+		var lang_checkAll_delete = "[lang+checkAll_delete+]";
+		var lang_uncheckAll_delete = "[lang+uncheckAll_delete+]";
+		
+		var lang_expand = "[lang+expand+]";
+		var lang_collapse = "[lang+collapse+]";
+		
+		function getMore(id)
+		{
+			if(document.getElementById("secRow_" + id).style.display == "none") // Expand
+			{
+				document.getElementById("secRow_" + id).removeAttribute('style');
+				document.getElementById("link_secRow_" + id).innerHTML = lang_collapse;
+				document.getElementById("smallMessage_" + id).style.display = "none";
+				document.getElementById("message_" + id).style.display = "block";
+			}
+			else
+			{
+				document.getElementById("secRow_" + id).setAttribute('style', 'display:none;'); //Collapse
+				document.getElementById("link_secRow_" + id).innerHTML = lang_expand;
+				document.getElementById("smallMessage_" + id).style.display = "block";
+				document.getElementById("message_" + id).style.display = "none";
+			}
+		}
+	</script>
+	<script type="text/javascript" src="[+sniPath+]js/ajax_actions.js"></script>
+</head>
+<body>
+	<div class="sectionHeader">[lang+sectionHeader+]</div>
+		<div class="sectionBody">
+			<div id="JC-wrapper">
+				<img id="JoCoLogo" src="[+sniPath+]images/JoCo.gif" />
+				<div style="float:[+alignLeft+]; position:relative;">[lang+select_theme+]: <small>[+theme+]</small></div>
+				<h2>Jot Comments snippet</h2>
+				<h5 id="ieWarning">[lang+ie6_warning+]</h5>
+				<table cellspacing="2" style=" margin-top:5px; margin-bottom:0px;">
+					[+search+]
+					[+permission+]
+					[+summary+]
+					<td class="button">
+						<a href="[+pageUrl+]help=1" onmouseover="document.getElementById('action_des').innerHTML='[lang+help_para+]';"
+		onmouseout="document.getElementById('action_des').innerHTML='';"><img src="[+sniPath+]/images/help.png" /><br />[lang+help+]</a>
+	</td>
+				</table>
+				<p id="action_des"></p>
+				<p style="clear:both;">&nbsp;</p>
+				<table id="navi" cellspacing="5" align="center" width="90%">
+					<td>[+hereImg_2+][+viewAll+]</td>
+					<td>[+hereImg_1+][+viewPublished+]</td>
+					<td>[+hereImg_0+][+viewUnpublished+]</td>
+					<td>[+hereImg_3+][lang+view_last_comments+]</td>
+					<td>[+hereImg_4+][lang+view_my_comments_para+]</td>
+				</table>
+				<p style="clear:right; height:10px;">&nbsp;</p>
+				<form name="actionForm" action="[+pageUrl+]reffer=1" method="POST">
+					<div class="sectionHeader">[lang+compressd_comments+]</div>
+					<div class="sectionBody">
+						[+errors+]
+						[+comments+]
+						
+						<p>&nbsp;</p>
+						<table class="quickButts" align="[+alignLeft+]" [+display_or_somthing_exists+]>
+							<td><small>[lang+check_all+]:</small>  </td>
+							<td class="chkbx-pub" style="background-image:url([+sniPath+]images/publish-col.gif);"><input type="checkbox" id="publish_checkLink" onchange="javascript:checkAll('publish');" /></td>
+							<td class="chkbx-unpub"style="background-image:url([+sniPath+]images/unpublish-col.gif);"><input type="checkbox" id="unpublish_checkLink" onchange="javascript:checkAll('unpublish');" /></td>
+							<td class="chkbx-delete"><input type="checkbox" id="delete_checkLink" onchange="javascript:checkAll('delete');" /></td>
+						</table>
+						<p>&nbsp;</p>
+					</div>
+
+					<p>&nbsp;</p>
+					<div align="center">
+						[+submit+]
+					</div>
+					<br />
+				</form>
+			</div>
+				<td>
+		
+	</td>
+			<div id="pagi" align="center">
+				<table>
+					<tr>
+					<td width="30%" class="preLink">[+previous_page+]</td>
+					<td width="40%" class="resLink" align="center">[lang+all_results+] [+count+]</td>
+					<td width="30%" class="nextLink" align="center">[+next_page+]</td>
+					</tr>
+				</table>
+				<p>
+					<span id="nums">[+paginate+]</span>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

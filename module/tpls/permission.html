@@ -1,0 +1,105 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"> 
+<html dir="[+dir+]" lang="[+lang_attr+]" xml:lang="[+lang_attr+]"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="[+baseUrl+][+modulePath+]tpls/style.css" />
+	<style type="text/css">
+		.sectionHeader { background: #bee860 url([+baseUrl+][+modulePath+]images/greenfade.gif) repeat-x top; }
+		.sectionBody { background: #fff url([+baseUrl+][+modulePath+]images/tabareabg.gif) repeat-x top; }
+		li { list-style: disc outside url([+baseUrl+][+modulePath+]images/li.gif); }
+		
+		#JC-wrapper{ background: url([+baseUrl+][+modulePath+]images/wrapper-[+alignLeft+].png) repeat-y; }
+		#JoCoLogo{ float:[+alignRight+]; margin-[+alignLeft+]:10px; margin-top:10px;}
+		.ie6 #JoCoLogo{ float:[+alignRight+]; position:relative; }
+		.ff3 #JoCoLogo{ margin-bottom:10px; }
+		
+		#permiTable tr { background-color:#F7F7F7; }
+		#permiTable td { padding: 2px 10px; }
+		
+		table { font-size:1em; }
+		
+		/* IE */
+		.ie .sectionBody { width:100%; }
+		.ie .sectionBody .sectionBody { width:100%; }
+		
+		/*  Opera  */
+		.opera .sectionHeader { margin-top:5px; }
+	</style>
+	<script type="text/javascript" src="[+baseUrl+][+modulePath+]js/css_browser_selector.js"></script>
+	<script type="text/javascript" src="[+baseUrl+][+modulePath+]js/ajax_request.js"></script>
+	<script type="text/javascript">
+		var mKey = "[+mKey+]";
+		var baseUrl = "[+baseUrl+]";
+		var modulePath = "[+modulePath+]";
+		var lang_loading = "[lang+loading+]";
+		var lang_get_permissions = "[lang+get_permissions+]";
+		var lang_add_user = "[lang+add_user+]";
+		var lang_remove_user = "[lang+remove_user+]";
+		var lang_move_in_confirm = "[lang+move_in_confirm+]";
+		var lang_move_out_confirm = "[lang+move_out_confirm+]";
+		var lang_choose_a_user = "[lang+choose_a_user+]";
+	</script>	
+	<script type="text/javascript" src="[+baseUrl+][+modulePath+]js/permissions.js"></script>
+</head>
+<body>
+<div class="sectionHeader">[lang+sectionHeader+]</div>
+	<div class="sectionBody">
+		<div id="JC-wrapper">
+			<img id="JoCoLogo" src="[+baseUrl+][+modulePath+]images/JoCo.gif" />
+			<a style="float:[+alignLeft+];" href="index.php?a=112&id=[+mKey+]"><small>[lang+go_back_home+]</small></a>
+			<h2>Jot Comments module</h2>
+			<table id="topMenu" cellspacing="2" style=" margin-top:5px; margin-bottom:0px;">
+					[+search+]
+					[+permission+]
+					[+summary+]
+					[+jotCall+]
+				<td class="button">
+					<a href="index.php?a=112&id=[+mKey+]&help=1" onmouseover="document.getElementById('action_des').innerHTML='[lang+help_para+]';"
+	onmouseout="document.getElementById('action_des').innerHTML='';"><img src="[+baseUrl+][+modulePath+]/images/help.png" /><br />[lang+help+]</a>
+</td>
+			</table>
+			<p id="action_des">&nbsp;</p>
+			<p style="clear:[+alignRight+];">&nbsp;</p>
+		<!-- search -->
+		<div class="sectionHeader">[lang+permission+]</div> 
+		<div class="sectionBody">
+			<p>[lang+permission_part_para+]</p>
+			<p>&nbsp;</p>
+			<div id="managePermissons">
+				<form name="permission">
+					<table width="100%">
+						<tr>
+							<th class="gridHeader">[lang+all_users+]</th>
+							<th></th>
+							<th class="gridHeader">[lang+exist_users+]</th>
+						</tr>
+						<tr>
+							<td width="33%" align="center">
+								<div id="mgrallUsers">[+allMgrUsers+]</div>
+								<br />
+								<div id="weballUsers">[+allWebUsers+]</div>
+							</td>
+							<td width="33%" align="center">
+								<div id="moveButtons">
+									<p id="moveIn"><img src="[+baseUrl+][+modulePath+]images/right_arrow_dis.png" alt="[lang+hire_user+]"/></p>
+									<p id="moveOut"><img src="[+baseUrl+][+modulePath+]images/left_arrow_dis.png" alt="[lang+fire_user+]"/></p>
+									<p id="getPermi"><img src="[+baseUrl+][+modulePath+]images/process_dis.png" alt="[lang+get_permissions+]" /></p>
+								</div>
+							</td>
+							<td width="33%" align="center">
+								<div id="mgrexistUsers">[+existMgrUsers+]</div>
+								<br />
+								<div id="webexistUsers">[+existWebUsers+]</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			
+			<form name="setPermissions" id="dataTableForm">
+				<div id="dataTable" align="center" style="margin-top:20px;"></div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

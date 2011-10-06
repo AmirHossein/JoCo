@@ -1,0 +1,288 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"> 
+<html dir="[+dir+]" lang="[+lang_attr+]" xml:lang="[+lang_attr+]"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="[+baseUrl+][+modulePath+]tpls/style.css" />
+	<style type="text/css">
+		.sectionHeader { background: #bee860 url([+baseUrl+][+modulePath+]images/greenfade.gif) repeat-x top; }
+		.sectionBody { background: #fff url([+baseUrl+][+modulePath+]images/tabareabg.gif) repeat-x top; }
+		li { list-style: disc outside url([+baseUrl+][+modulePath+]images/li.gif); }
+		
+		#JC-wrapper{ background: url([+baseUrl+][+modulePath+]images/wrapper-[+alignLeft+].png) repeat-y;}
+		#JoCoLogo{ float:[+alignRight+]; margin-[+alignLeft+]:10px; margin-top:10px;}
+		.ie #JoCoLogo{ float:[+alignRight+]; position:relative; }
+		.ff3 #JoCoLogo{ margin-bottom:10px; }
+		
+		table { font-size:1em; }
+		
+		/*  Opera  */
+		.opera .sectionHeader { margin-top:5px; }
+		.opera table { font-size:1em; }
+	</style>
+	<script type="text/javascript" src="[+baseUrl+][+modulePath+]js/css_browser_selector.js"></script>
+</head>
+<body>
+	<div class="sectionHeader">[lang+sectionHeader+]</div>
+		<div class="sectionBody">
+			<div id="JC-wrapper">
+				<img id="JoCoLogo" src="[+baseUrl+][+modulePath+]images/JoCo.gif" />
+				<a style="float:[+alignLeft+];" href="index.php?a=112&id=[+mKey+]"><small>[lang+go_back_home+]</small></a>
+				<h2>Jot Comments module</h2>
+			<table cellspacing="2" style=" margin-top:5px; margin-bottom:0px;">
+				[+search+]
+				[+permission+]
+				[+summary+]
+				[+jotCall+]
+				<td class="button">
+					<a href="index.php?a=112&id=[+mKey+]&help=1" onmouseover="document.getElementById('action_des').innerHTML='[lang+help_para+]';"
+	onmouseout="document.getElementById('action_des').innerHTML='';"><img src="[+baseUrl+][+modulePath+]/images/help.png" /><br />[lang+help+]</a>
+</td>
+			</table>
+			<p id="action_des">&nbsp;</p>
+				</table>
+				<p id="action_des"></p>
+				<p style="clear:both;">&nbsp;</p>
+				<div class="sectionHeader">[lang+help_joco+]</div>
+				<div class="sectionBody">
+					<p><b>JoCo</b> : <font color="#5c9943"><b>Jo</b></font>t and <font color="#5c9943"><b>Co</b></font>mment module.
+					<p>Version: 0.9<p>
+					<p>Author: <b>AHHP</b> ~ Boplo@Boplo.ir<p>
+					<p>Thanks to <a href="mailto:aidan@php.net" title="aidan@php.net">Aidan Lister</a> <small><i>for <a href="http://aidanlister.com/repos/v/function.str_highlight.php" title="function.str_highlight">highlight codes</a></i></small></p>
+					<p>JoCo allow you to manage comments of your site which create by <b>Jot</b> snippet.
+					<br />The administrators <small>(role=1)</small> can set permissions for other managers except other administrators. they can hide some parts of this module for managers so if you have been limited by permissions, you won't see all parts. JoCo has some parts that you would read descriptions below,</p>
+					
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					
+					<h3>Main frame</h3>
+					<div>
+						<p>You can see several links below the JoCo logo, these links let you choose that what kind of comments you want to see now.<br />
+						JoCo uses your last login time and let you see comments that have created from this time. by click on <b>Last comments</b>, you will get this comments and <b>My Comments</b> link gets you all your comments in the site too.
+						</p>
+						<p>There is a tiny part on the top of frame that allow you to change the <b>theme</b>. if you select <b>Compressed</b>, you will see more comments in the screen. it is good to manage many comments in one page.</p>
+						<br />
+						after the links you see rows of comments. every row has some detaile:
+						<ul>
+							<li>comment title or subject has placed on eash row header or top bar.</li>
+							<br />
+							<li>on another side, you see AJAX button,
+								<ul>
+									<li>comment will <b>Publish</b> on click on <img src="[+baseUrl+][+modulePath+]images/publish.png" /> button.</li>
+									<li>comment will <b>Unpublish</b> on click on <img src="[+baseUrl+][+modulePath+]images/unpublish.png" /> button.</li>
+									<li>comment will <b>Delete</b> on click on <img src="[+baseUrl+][+modulePath+]images/delete.png" /> button.</li>
+									<li>on click on <img src="[+baseUrl+][+modulePath+]images/blue-edit.gif" width="16"/> button you will see the <b>Edit</b> form, press Save in this form to save changes.</li>
+								</ul>
+							</li>
+							<br />
+							<li>There is link of the document that this comment have placed in it, below AJAX buttons.</li>
+							<br />
+							<li>IP of user is there too.</li>
+							<br />
+							<li>JoCo search comment custom fields and insert them. if the comment has been created by a site members, you will see his/her <b>fullname</b> and <b>email</b>. Time of creating comment is there too.</li>
+							<br />
+							<li>You see the message and probably a colorless word which indicates that comments is published or unpublished </li>
+							<br />
+							<li>in other side, there is checkboxes to do actions on more comments.</li>
+							<br />
+							<li>after all comment rows, there is <b>Submit</b> button that do actions that you choose by checking comment checkboxes.</li>
+						</ul>
+						<br />
+						<p>User will not see the comments which are in documents that he/she can not access to them (documents in docgroups that user has no permissions to access them).</p>
+						<p>The comments with a little different style are user's own commnets.</p>
+					</div>
+					
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					
+					<h3>Search</h3>
+					<div>
+						<p>You can search or specify something to see special comments among many many commnets here.</p>
+						<ul>
+							<li>Set the type of result in <b>Display</b> section.</li>
+							<br />
+							<li>You can search a specified word in comment or get comments that do not contain the word and do same by Regular Experssions too. the fields are <b>content</b><small>(message content)</small>, <b>title</b><small>(title or subject of comment)</small>, <b>tagid</b><small>(tagid of Jot call to get special result)</small>, <b>flags</b><small>(the flag image path to get comment by user's country)</small>. the string will be highlight in result page.</li>
+							<br />
+							<li>It is possible to search only in Documents that you want. you see fields below:
+								<ul>
+									<li><b>Parents</b> gives you the parant chidren and pranet itself, value is comma delimated parent IDs that are <font color="red">integer</font>.
+									</li>
+									<li><b>Docgroup</b> field allow you to search in documents that are members of comma delimated document groups names that are <font color="red">string</font></li>
+									<li>In <b>Documents</b> field you can give comma delimated document IDs that are <font color="red">integer</font></li>
+									<li><b>NOT Documents</b> field is comma delimated document IDs that are <font color="red">integer</font> to remove from results.</li>
+									<li>at last the link at the other side of these fields gives you the list of documents that you choose by fields. the striked document title exist but have no comment and striked numbers does not exist in site.</li>
+								</ul>	
+							</li>
+							<br />
+							<li>Next section allow you to get comments by their authors. here is like section above but for users. the <b>Webgroups</b> field gets comma delimated list of webgroup name that are <font color="red">string</font>. <b>user</b> and <b>NOT user</b> fields get comma delimated user IDs that are <font color="red">integer</font>. the checkbox let you add <b>Geust</b> authors to your results.</li>
+							<br />
+							<li>You can get comments between two dates <b>from</b> fisrt date <b>to</b> second date in <b>Date limitation</b> section.<br />dates must be in YYYY-mm-dd format e.g. 1987-10-15</li>
+							<br />
+							<li><b>Limit</b> section set the maximum numebr if results.</li>
+							<br />
+							<li><b>Sort</b> section let you sort the result by comments data</li>
+							<br />
+							<li>and last section limits search in new comment from your last action in JoCo.</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p>JoCo indicates the refrence of search for each result row. for example if you search in id=4 document and id=10 user's comments, in results there is a part that show you the result is from user fields or documents fields.</p>
+					</div>
+					
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					
+					<h3>Permission</h3>
+					<div>
+						<p>JoCo save each manager data by one using this module in database. if the new user isn't an administrator, he/she has minimum permissions else has full access.</p>
+						<p>In <b>Permission</b> part you see list of all site managers and list of managers who JoCo registers them.</p>
+						<p>You can add a manager to JoCo list by select the user from All user list and click on arrow button. also you can remove a exited user from JoCo table by press another arrow button.</p>
+						<p>When you select a existed user, the action button in center column turns on. click on it gives you this user permissions:
+							<ul>
+								<li><b>Publish comments</b> allows user to see publish buttons and publish comments.</li>
+								<li><b>Unublish comments</b> allows user to see unpublish buttons and unpublish comments.</li>
+								<li><b>Edit comments</b> allows user to see edit buttons and edit comments.</li>
+								<li><b>Delete comments</b> allows user to see delete buttons and delete comments.</li>
+								<li><b>Log actions</b> logges an event in MODx log_manager table on publish, unpublish, edit and delete comments by this user. The ID of comments loggs too.</li>
+								<li><b>View all comments</b> allows user to see the All comments link and results.</li>
+								<li><b>View published comments</b> allows user to see the Published comments link and results.</li>
+								<li><b>View unpublished comments</b> allows user to see the Unpublished comments link and results.</li>
+								<li><b>View IP</b> allows user to see IP of each comment.</li>
+								<li><b>Manage Web user's permissions</b> allows user to see and manage webuser part.</li>
+								<li><b>View search</b> allows user to use JoCo search part.</li>
+								<li><b>View permissions</b> allows user to access to <b>this</b> part to see and probably change the permissions.</li>
+								<li><b>View summary</b> allows user to use JoCo summary part.</li>
+								<li><b>View Jot Calls</b> allows user to use JoCo Jot Calls part.</li>
+								<li><b>Change theme</b> allows user to change the default JoCo theme.</li>
+								<li><b>Default theme</b> shows the default JoCo theme for this user.</li>
+								<li><b>Default view</b> shows type of default view in main frame.</li>
+								<li><b>Comments of docs user has created</b> the action for comments that are in documents that this users has created. if you select <b>no permission</b>, it will remove all another selected checkboxes.</li>
+								<li><b>Comments of docs user has published</b> the action for comments that are in documents that this users has published. if you select <b>no permission</b>, it will remove all another selected checkboxes.</li>
+								<li><b>Comments of docs user has edited</b> the action for comments that are in documents that this users has edited. selecting <b>no permission</b> will remove all another selected checkboxes.</li>
+								<li><b>Number of results in summary</b> displays the number of results in each page of <b>Summary</b> part.</li>
+								<li><b>Number of results in main frame</b> displays the number of results in each page of <b>Main frame</b>.</li>
+								<li><b>Number of results in Jot Calls</b> displays the number of results in each page of <b>Jot Calls</b>.</li>
+							</ul>
+						</p>
+						<br />
+						<p>
+							Administrators can change other users except other administrators. This is not possible to remove an administrator too.<br />
+							each user who access to this part can edit his/her permissions. it used for set default variables such as numeber of result in main frame of default theme and etc.
+						</p>
+						<p>Do NOT select multiple user at same time, JoCo will do action on one of them.</p>
+					
+					</div>
+					
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					
+					<h3>Summary</h3>
+					<div>
+						<p>In this part you can see a overall view of documents which has Jot call and comments.<br />
+						you see the number comments in each document and go to manage only comments of this document on click on <img src="[+baseUrl+][+modulePath+]images/home.png" width="20" /> buttom. number of subsciptions in here too and you can full name and email address of subscriptors on click on <img src="[+baseUrl+][+modulePath+]images/search_magnifier.png" width="16" /> button.
+						</p>
+					</div>
+				
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					
+					<h3>Jot Calls</h3>
+					<div>
+						<p>It is possible to review and modify all Jot calls in your site. Calls in <b>Document Content</b>, <b>Template Variables</b> and <b>Chunks</b>.<br />You need "see document" manager role to see documents calls, "edit document" to modify them and "edit chunk" to modify chunk calls and you can't see documents that you have not enough manager permissions to see them.
+						</p>
+					</div>
+				
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<h3>JoCo Events</h3>
+					<div>
+						<p>There are 5 PHP function that run at some events. This functions exist as class methods in includes/customActions.php. you should add your codes to this file.</p>
+						<ul>
+							<li>
+								<h5>onBeforeSetOutputRow($comment_row_array, $comment_tpl)</h5>
+								JoCo runs a method to create each comment output, this method runs in that method. so it has been placed in a loop. You can find it in includes/joco.class.php at line 197<br /><br />
+								Parameters:
+									<ul>
+										<li>$comment_row_array : this parameter is an associative array contains a row from "jot_content" table. JoCo sets DB data after this method from it's array output.</li>
+										<li>$comment_tpl : this is a string var conatins template for each comment row in output. you can use name of all "jot_content" table columns as placeholder in your template e.g. <i>[+tagid+]</i> that prints content of <i>tagid</i> column for this comment. please note that some values need permissions to see in output.</li>
+									</ul>
+								<br />
+								It returns: an array,
+								<ul>
+									<li>first element is extended row data. JoCo <b>merges</b> this array with current row data. so for example if you add "gender" key to this array, you can get it's value by using <b>[+gender+]</b> in comment tpl.</li>
+									<li>second element is extended comment tpl that will be <b>replaced</b> with current tpl. you can add your proccess, change the tpl by your values and gets new tpl to JoCo to add other data.</li>
+								</ul>
+							</li>
+						</ul>
+						<br />
+						
+					<ul>
+						<li>
+							<h5>onBeforeCheckRow($comment_row_array)</h5>
+							JoCo runs this method right before parse a comment and will parse comment if this method return <b>TRUE</b> and will reject comment if this method return <b>FALSE</b>.It is useful to optimze speed of checking comments with some filters and reject unwanted comments before parsing them. You can find it in includes/joco.class.php at line 164<br /><br />
+							Parameters:
+								<ul>
+									<li>$comment_row_array : this parameter is an associative array contains a row from "jot_content" table. JoCo sets DB data after this method from it's array output.</li>
+								</ul>
+							<br />
+							It returns: boolean,
+							<ul>
+								<li><b>TRUE</b>: will accept and parse comment.</li>
+								<li><b>FALSE</b>: will reject comment.</li>
+							</ul>
+						</li>
+					</ul>
+						<br />
+						
+						<p>Methods below are used to change some another tables or do something you want on actions such as logging or etc.</p>
+						<ul>
+							<li>
+								<h5>onBeforePublish($comment_id)</h5>
+								This method runs right before updating "jot_content" table to publish a comment. You can find it in includes/joco.class.php at line 122<br /><br />
+								Parameter:
+									<ul>
+										<li>$comment_id : Unique ID of comment. Content of <i>id</i> column in "jot_content" table.</li>
+									</ul>
+								<br />
+								It returns: void.
+							</li>
+							<br />
+							<li>
+								<h5>onBeforeUnpublish($comment_id)</h5>
+								This method runs right before updating "jot_content" table to unpublish a comment. You can find it in includes/joco.class.php at line 127<br /><br />
+								Parameter:
+									<ul>
+										<li>$comment_id : Unique ID of comment. Content of <i>id</i> column in "jot_content" table.</li>
+									</ul>
+								<br />
+								It returns: void.
+							</li>
+							<br />							<li>
+								<h5>onBeforeEdit($comment_id)</h5>
+								This method runs right before updating "jot_content" table with new content of a comment. You can find it in includes/joco.class.php at line 132<br /><br />
+								Parameter:
+									<ul>
+										<li>$comment_id : Unique ID of comment. Content of <i>id</i> column in "jot_content" table.</li>
+									</ul>
+								<br />
+								It returns: void.
+							</li>
+							<br />							<li>
+								<h5>onBeforeDelete($comment_id)</h5>
+								This method runs right before deleting a row from "jot_content" table. You can find it in includes/joco.class.php at line 137<br /><br />
+								Parameter:
+									<ul>
+										<li>$comment_id : Unique ID of comment. Content of <i>id</i> column in "jot_content" table.</li>
+									</ul>
+								<br />
+								It returns: void.
+							</li>
+					</div>
+					
+					<p style="margin-[+alignRight+]:40px; margin-top:50px;">
+						Good luck<br />
+						&nbsp;&nbsp;&nbsp;AHHP<br />
+						<small>2009/03/29</small>
+					</p>
+				</div>
+		</div>
+	</body>
+</html>
